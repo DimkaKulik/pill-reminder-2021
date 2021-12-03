@@ -1,0 +1,96 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body { 
+  height: 100%;
+  width: 100%;
+}
+
+.header-container {
+  font-family: 'Garamond';
+
+  display: flex;
+  flex-direction: row;
+
+
+  height: 10vh;
+  width: 100%;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 5%;
+  color: white;
+  background: #00B0BD;
+}
+
+.alogo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+
+  color: #00B0BD;
+}
+
+
+.landing-container {
+  background: url('landingbackground.jpg') center no-repeat;
+  background-size: cover;
+
+  height: 90vh;
+  width: 100%;
+}
+
+.landing-overlay {
+  display: flex;
+  justify-content: center;
+
+  height: 100%;
+  
+  vertical-align: middle;
+
+  font-family: 'Tahoma';
+
+  color: #fff;
+  
+  background-color: rgba(0, 0, 0, .4);
+}
+
+.wrapper {
+  margin-top: 15%;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+button { 
+  margin: 10px;
+  border: 2px solid;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, .1);
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+ul {
+
+}
