@@ -36,7 +36,7 @@ function SignUp (props) {
     const reauthorize = props.reauthorize;
 
     function submit() {
-        const url = 'https://pill-reminder2.herokuapp.com/auth/login';
+        const url = 'https://pill-reminder2.herokuapp.com/auth/register';
         const method = 'POST'
         const requestEntity = {
             'email': document.getElementById('email').value,
@@ -85,8 +85,6 @@ function SignUp (props) {
                 {form}
             </div>
         );
-
-        
     }
     
 
