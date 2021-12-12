@@ -6,6 +6,7 @@ import List from './List.js'
 import Error from './Error.js'
 import SignIn from './SignIn.js';
 import SignUp from './SignUp.js';
+import './index.css'
 
 import {
   BrowserRouter as Router,

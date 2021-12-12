@@ -46,7 +46,7 @@ body {
 }
 
 .landing-container {
-  background: url('landingbackground.jpg') center no-repeat;
+  background: url('./static/landingbackground.jpg') center no-repeat;
   background-size: cover;
 
   height: 90vh;
