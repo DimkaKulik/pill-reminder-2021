@@ -17,10 +17,24 @@ body {
   display: flex;
   flex-direction: row;
 
-
-  height: 10vh;
   width: 100%;
 }
+
+.headerwrapper {
+  height: 10vh;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.logout {
+  padding: 0px;
+  margin: 5px;
+  width: 100px;
+  color: white;
+}
+
 
 .logo {
   display: flex;
@@ -175,4 +189,15 @@ input {
   margin: 1px;
   font-size: 32pt;
   font-family: 'Courier new';
+}
+
+.submit {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white
+}
+
+.errormessage {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  background-color:rgba(250, 0,0, 0.5);
 }

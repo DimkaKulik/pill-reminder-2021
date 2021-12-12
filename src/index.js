@@ -6,38 +6,56 @@ import List from './List.js'
 import Error from './Error.js'
 import SignIn from './SignIn.js';
 import SignUp from './SignUp.js';
-import './index.css'
+import './index.css';
 
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 
-class App extends React.Component {
-  render() {
-     return (<Router>
-       <Header />   
-       <Switch>
-          <Route exact path="/">
-            <Landing/>
-          </Route>
-          <Route exact path="/list">
-            <List />
-          </Route>
-          <Route path="/signup">
-            <SignUp />
-          </Route>
-          <Route path="/signin">
-            <SignIn />
-          </Route>
-          <Route path="/">
-            <Error />
-          </Route>
-       </Switch>
-     </Router>);
+const AuthorizationContext = React.createContext()
+
+function isTokenExpired(token) {
+  const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
+  return (Math.floor((new Date).getTime() / 1000)) >= expiry;
+}
+
+function App() {
+  let defaultStateValue = false;
+  if (sessionStorage.getItem('token') == null) {
+    defaultStateValue = false;
+  } else {
+    defaultStateValue = !isTokenExpired(sessionStorage.getItem('token'))
   }
+  const state = React.useState(defaultStateValue);
+
+  const isAuthorized = state[0];
+  const reauthorize = () => { state[1](prev => !prev) };
+
+  return (
+    <Router>
+      <AuthorizationContext.Provider >
+        <Header isAuthorized={isAuthorized} reauthorize={reauthorize} />   
+        <Switch>
+            <Route exact path="/"> 
+              <Landing isAuthorized={isAuthorized} reauthorize={reauthorize} />
+            </Route>
+            <Route exact path="/list"> 
+              <List isAuthorized={isAuthorized} reauthorize={reauthorize} />
+            </Route>
+            <Route path="/signup">
+              <SignUp isAuthorized={isAuthorized} reauthorize={reauthorize} />
+            </Route>
+            <Route path="/signin"> 
+              <SignIn isAuthorized={isAuthorized} reauthorize={reauthorize} />
+            </Route>
+            <Route path="/" component={Error} />
+        </Switch>
+      </AuthorizationContext.Provider>
+    </Router>
+  );
+
 }
 
 ReactDOM.render(
