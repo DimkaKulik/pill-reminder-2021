@@ -1,20 +1,43 @@
 import React from 'react';
 import Error from './Error.js'
 
+function sendRequest(method, url, body = null) {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest()
+
+        xhr.open(method, url)
+
+        xhr.responseType = 'json'
+        xhr.setRequestHeader('Content-Type', 'application/json')
+
+        xhr.onload = () => {
+            if (xhr.status >= 400) {
+                reject(xhr.response)
+            } else {
+                resolve(xhr.response)
+            }
+        }
+
+        xhr.onerror = () => {
+            reject(xhr.response)
+        }
+
+        xhr.send(JSON.stringify(body))
+    })
+}
+
 function List(props) {
     const isAuthorized = props.isAuthorized;
     const reauthorize = props.reauthorize;
 
     function getList() {
-        return [{'date':'Jan 12, 2021', 'time':'20:00'},
-                {'date':'Feb 13, 2021', 'time':'10:00'},
-                {'date':'Dec 118, 2021', 'time':'11:00'},
-                {'date':'Nov 19, 2021', 'time':'18:00'},
-                {'date':'Jan 13, 2021', 'time':'19:00'},
-                {'date':'May 2, 2021', 'time':'9:00'}]
+        const url = 'https://pill-reminder2.herokuapp.com/reminder/' + sessionStorage.getItem('userId')
+        console.log(url)
+        sendRequest('GET', url)
+            .then(data => console.log(data))
     }
 
-    const listItems = getList().map((item) => <li><span>{'' + item['date'] + ', ' + item['time']}</span><span className="delete">DELETE</span></li>);
+    const listItems = getList()//.map((item) => <li><span>{'' + item['date'] + ', ' + item['time']}</span><span className="delete">DELETE</span></li>);
 
     if (isAuthorized) {
         return (
