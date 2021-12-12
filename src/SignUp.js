@@ -62,7 +62,7 @@ function SignUp (props) {
         </div>
     );
     
-    if (registered == 0) {
+    if (registered == 0 && !isAuthorized) {
         return (
             <div className="signinwrapper">
                 <div className="signinform">
@@ -74,9 +74,11 @@ function SignUp (props) {
                 </div>            
             </div>
         );
-    } else if (registered == 1) {
+    } else if (registered == 1 || isAuthorized) {
         return (
-            <h1>Success</h1>
+            <div className="errorwrapper">
+                <h1 className="error">Вы зарегистрированный пользователь!</h1>
+            </div>
         );
     } else {
         return (
