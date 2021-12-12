@@ -1,11 +1,14 @@
 * {
   margin: 0px;
   padding: 0px;
+
+  
 }
 
 body { 
   height: 100%;
   width: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .header-container {
@@ -33,10 +36,14 @@ body {
   flex-direction: column;
   justify-content: center;
   margin-left: 10px;
-
   color: #00B0BD;
 }
 
+.alogo a{
+  text-decoration: none;
+  color: #00B0BD;
+
+}
 
 .landing-container {
   background: url('landingbackground.jpg') center no-repeat;
@@ -92,5 +99,80 @@ button {
 }
 
 ul {
+  list-style-type: none;
+  width: 80%;
+  height: 10%;
+}
 
+li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  font-size: 16pt;
+  margin-top: 10px;
+
+  background: white;
+  
+  border-radius: 5px;
+
+  font-family: arial;
+
+}
+
+.delete {
+  padding: 0px;
+  margin: 10px;
+  color: white;
+
+  background: rgba(250, 0,0, 0.5);
+
+  font-family: arial;
+}
+
+.add {
+  color: white;
+  background: rgb(0, 231, 0);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.addnewrecord {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.errorwrapper{
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  font-family: 'Garamond';
+  max-width: 500px;
+}
+
+.error .sorry {
+  color: red;
+}
+
+
+.signinwrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.signinform {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+input {
+  outline: none;
+  width: 500px;
+  border: none;
+  height: 50px;
+  margin: 1px;
+  font-size: 32pt;
+  font-family: 'Courier new';
 }
